@@ -9,7 +9,7 @@ before_install:
  - "[ -e /etc/lsb-release ] && cat /etc/lsb-release"
  - "phantomjs --version"
  - "mysql -NBe 'select version()'"
- - sudo apt-get install libgmp3-dev
+ - "sudo apt-get install libgmp3-dev"
  - "mysql -e 'create database browserid;'"
 
 node_js:
@@ -19,11 +19,11 @@ node_js:
 notifications:
   irc:
     channels:
-      - "irc.mozilla.org#identity"
+      - "irc.freenode.net##bramwelt"
     use_notice: false
     skip_join: false
   email:
-    - jrgm@mozilla.com
+    - trevor@bramwell.net
 
 env:
  - WHAT_TESTS=front MYSQL_USER=root DISABLE_REQUEST_THROTTLING=true
