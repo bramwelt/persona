@@ -120,19 +120,16 @@ BrowserID.Modules.ValidateRpParams = (function() {
             "experimental_emailHint");
       }
 
-      // additional features available only to internal/native consumers
-      if (isInternalRPAPI(params)) {
-        // userAssertedClaims allows a user agent to include additional
-        // claims in the generated assertion. Note that these claims are
-        // asserted by the user, not the IdP, so RP must not use them for
-        // positive access grants. They may be used for negative access
-        // grants or additional attributes that need to be authenticated,
-        // such as key exchange.
-        if (paramsFromRP.experimental_userAssertedClaims) {
-          params.userAssertedClaims = validateUserAssertedClaims(
-              paramsFromRP.experimental_userAssertedClaims,
-              "experimental_userAssertedClaims");
-        }
+      // userAssertedClaims allows a user agent to include additional
+      // claims in the generated assertion. Note that these claims are
+      // asserted by the user, not the IdP, so RP must not use them for
+      // positive access grants. They may be used for negative access
+      // grants or additional attributes that need to be authenticated,
+      // such as key exchange.
+      if (paramsFromRP.experimental_userAssertedClaims) {
+        params.userAssertedClaims = validateUserAssertedClaims(
+            paramsFromRP.experimental_userAssertedClaims,
+            "experimental_userAssertedClaims");
       }
 
       if (getParams.indexOf("?AUTH_RETURN") === 0) {
